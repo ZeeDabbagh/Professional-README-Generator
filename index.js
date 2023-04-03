@@ -1,3 +1,5 @@
+// Required libraries
+
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkDown = require ('./assets/generateMarkDown')
@@ -28,11 +30,11 @@ inquirer
         {
             type: 'list',
             name: 'license',
-            choices: ['Academic Free License v3.0', 'Apache license 2.0', 'Boost Software License 1.0', 'Educational Community License v2.0', 'MIT', 'Mozilla Public License 2.0', 'The Unlicense', 'zLib License', 'None']
+            choices: ['Apache license 2.0', 'GNU', 'MIT', 'None']
         },
         {
             type: 'input',
-            name: 'contributions',
+            name: 'contributing',
             message: 'Write an explanation on how to contribute to your open source project',
         },
         {
@@ -47,17 +49,14 @@ inquirer
         },
         {
             type: 'input',
-            name: 'link',
-            message: 'Please provide a link to your Github'
-        },
-        {
-            type: 'input',
             name: 'email',
             message: 'Please provide your email address'
         }
     ])
 
+// Writing a new markdown file from the user's input
     .then((data) => {
         fs.writeFile(`README.md`, generateMarkDown(data), (err) =>
-            err ? console.error(err) : console.log("Thank you! Your Professional Readme is generated"))
+            err ? console.error(err) : console.log("Thank you! Your Readme is generated"))
     })
+
